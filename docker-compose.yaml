@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  app:
+    image: reportgeneration
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 6060:6060
+    volumes:
+      - .:/app
+    entrypoint: sleep 50000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
